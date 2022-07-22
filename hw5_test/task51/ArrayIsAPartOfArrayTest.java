@@ -13,7 +13,7 @@ class ArrayIsAPartOfArrayTest {
 
     @ParameterizedTest
     @MethodSource("provideInputData")
-    void whenCheckIfArrayIsAPartOfAnotherArrayThenReturnTrueOrFalseX(int[] bigArray,
+    void whenCheckIfArrayIsAPartOfAnotherArrayThenReturnTrueOrFalse1(int[] bigArray,
                                                                      int[] smallArray, boolean expected) {
 
         ArrayIsAPartOfArray arrayIsAPartOfArray = new ArrayIsAPartOfArray(bigArray, smallArray);
