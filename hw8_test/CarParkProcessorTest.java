@@ -43,7 +43,7 @@ public class CarParkProcessorTest {
     }
 
     @ParameterizedTest
-    @MethodSource("provideInputData")
+    @MethodSource("provideInputDataForTotalCostOfMyPark")
     void whenTryToGetTotalCostOfMyParReceiveTotalCost(Transport[] transports, int expectedTotalCost) {
         InterfaceTaxipark myPark = new Park(transports);
         int actualTotalCost = myPark.getTotalCostOfMyPark();
@@ -51,7 +51,7 @@ public class CarParkProcessorTest {
         Assertions.assertEquals(expectedTotalCost, actualTotalCost);
     }
 
-    private static Stream<Arguments> provideInputData() {
+    private static Stream<Arguments> provideInputDataForTotalCostOfMyPark() {
         return Stream.of(
                 Arguments.of(transportsForTest, 126300),
                 Arguments.of(new Transport[]{
@@ -64,7 +64,7 @@ public class CarParkProcessorTest {
     }
 
     @ParameterizedTest
-    @MethodSource("provideInputData2")
+    @MethodSource("provideInputDataForSearchingOfMinAndMaxSpeed")
     void whenTryToGetMinAndMaxSpeedOfParkThenReceiveIt(Transport[] transports,
                                                        int minSpeed, int maxSpeed, Transport[] expectedResultTransport) {
         InterfaceTaxipark myPark = new Park(transports);
@@ -74,7 +74,7 @@ public class CarParkProcessorTest {
 
     }
 
-    private static Stream<Arguments> provideInputData2() {
+    private static Stream<Arguments> provideInputDataForSearchingOfMinAndMaxSpeed() {
         return Stream.of(
                 Arguments.of(transportsForTest, 109, 161, new Transport[]{
                         new Bus(1992, "Ikarus", "ik155", 14300, 5.5, 115, 48),
