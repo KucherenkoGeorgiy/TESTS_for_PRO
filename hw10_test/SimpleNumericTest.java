@@ -3,6 +3,7 @@ package com.hillel.kucherenko.hw10_test;
 import com.hillel.kucherenko.hw10.ArrayOfSimple;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 
 public class SimpleNumericTest {
@@ -26,7 +27,7 @@ public class SimpleNumericTest {
 
         for (int i = 5; i < 100; i++) {
             isSimple = true;
-            for (int j = 2; j < i; j++) {
+            for (int j = 2; j <= (i / 2); j++) {
                 if (i % j == 0) {
                     isSimple = false;
                     break;
