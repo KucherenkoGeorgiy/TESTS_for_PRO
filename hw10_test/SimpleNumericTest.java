@@ -4,6 +4,7 @@ import com.hillel.kucherenko.hw10.ArrayOfSimple;
 import com.hillel.kucherenko.hw10.MicroArray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 
 public class SimpleNumericTest {
@@ -16,9 +17,9 @@ public class SimpleNumericTest {
     @Test
     void whenTryToGetSimplesReceiveCorrectValues() {
         int[] expectedArray = new int[]{};
+        int[] actualResult = arrayOfSimple.getFinalArray();
         boolean isSimple;
 
-        int[] actualResult = arrayOfSimple.getFinalArray();
         Arrays.sort(actualResult);
 
         for (int i = 5; i < 100; i++) {
@@ -64,7 +65,7 @@ public class SimpleNumericTest {
                 counterForCurrentMicroArray = 0;
             }
             System.out.println("now we compare: " + actualFinalArray[i] + " and "
-                                + currentMicroArray[counterForCurrentMicroArray]);
+                    + currentMicroArray[counterForCurrentMicroArray]);
             if (actualFinalArray[i] != currentMicroArray[counterForCurrentMicroArray]) {
                 hasProblem = true;
                 break;
@@ -81,6 +82,7 @@ public class SimpleNumericTest {
         MicroArray[] tempMicroarrays = arrayOfSimple.getMyMicroArrays();
         int[] tempRes = new int[]{};
         int tempValue;
+
         for (int j = 0; j < tempMicroarrays.length; j++) {
             if (tempMicroarrays[j].getRes().length > 0) {
                 tempValue = tempMicroarrays[j].getRes()[0];
