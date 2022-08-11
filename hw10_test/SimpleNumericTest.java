@@ -7,14 +7,17 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 public class SimpleNumericTest {
+    final static ArrayOfSimple arrayOfSimple = new ArrayOfSimple(5, 100, 20);
+
+    {
+        arrayOfSimple.makeThreads();
+    }
 
     @Test
     void whenTryToGetSimplesReceiveCorrectValues() {
-        ArrayOfSimple arrayOfSimple = new ArrayOfSimple(5, 100, 20);
         int[] expectedArray = new int[]{};
         boolean isSimple;
 
-        arrayOfSimple.makeThreads();
         int[] actualResult = arrayOfSimple.getFinalArray();
         Arrays.sort(actualResult);
 
@@ -50,8 +53,6 @@ public class SimpleNumericTest {
 
     @Test
     void checkIfArrayConsistsOfSubarraysCorrectly() {
-        ArrayOfSimple arrayOfSimple = new ArrayOfSimple(5, 100, 20);
-        arrayOfSimple.makeThreads();
         int[] actualFinalArray = arrayOfSimple.getFinalArray();
         int[] currentMicroArray = new int[]{};
         int counterForCurrentMicroArray = 0;
