@@ -4,7 +4,6 @@ import com.hillel.kucherenko.hw10.ArrayOfSimple;
 import com.hillel.kucherenko.hw10.MicroArray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 
 public class SimpleNumericTest {
