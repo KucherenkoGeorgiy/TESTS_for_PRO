@@ -1,6 +1,7 @@
 package com.hillel.kucherenko.hw10_test;
 
 import com.hillel.kucherenko.hw10.ArrayOfSimple;
+import com.hillel.kucherenko.hw10.MicroArray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -53,5 +54,50 @@ public class SimpleNumericTest {
         }
         expectedArray = tempArray;
         return expectedArray;
+    }
+
+    @Test
+    void checkIfArrayConsistsOfSubarraysCorrectly() {
+        ArrayOfSimple arrayOfSimple = new ArrayOfSimple(5, 100, 20);
+        arrayOfSimple.makeThreads();
+        int[] actualFinalArray = arrayOfSimple.getFinalArray();
+        int[] currentMicroArray = new int[]{};
+        int counterForCurrentMicroArray = 0;
+        boolean hasProblem = false;
+
+        for (int i = 0; i < actualFinalArray.length; i++) {
+            if (currentMicroArray.length == 0) {
+                currentMicroArray = searchForNeededMicroArray(arrayOfSimple, actualFinalArray[i]);
+                counterForCurrentMicroArray = 0;
+            }
+            System.out.println("now we compare: " + actualFinalArray[i] + " and " + currentMicroArray[counterForCurrentMicroArray]);
+            if (actualFinalArray[i] != currentMicroArray[counterForCurrentMicroArray]) {
+                hasProblem = true;
+                break;
+            }
+            if (counterForCurrentMicroArray == currentMicroArray.length - 1) {
+                currentMicroArray = new int[]{};
+            }
+            counterForCurrentMicroArray++;
+        }
+        Assertions.assertFalse(hasProblem);
+    }
+
+    private int[] searchForNeededMicroArray(ArrayOfSimple arrayOfSimple, int i) {
+        MicroArray[] tempMicroarrays = arrayOfSimple.getMyMicroArrays();
+        int[] tempRes = new int[]{};
+        int tempValue;
+        for (int j = 0; j < tempMicroarrays.length; j++) {
+            if (tempMicroarrays[j].getRes().length > 0) {
+                tempValue = tempMicroarrays[j].getRes()[0];
+                if (tempValue == i) {
+                    tempRes = tempMicroarrays[j].getRes();
+                }
+            }
+        }
+        System.out.println("Searching for microarray with " + i);
+        System.out.println("We found needed microarray:");
+        System.out.println(Arrays.toString(tempRes));
+        return tempRes;
     }
 }
