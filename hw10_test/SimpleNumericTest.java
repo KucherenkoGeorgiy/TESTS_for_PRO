@@ -4,7 +4,6 @@ import com.hillel.kucherenko.hw10.ArrayOfSimple;
 import com.hillel.kucherenko.hw10.MicroArray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 
 public class SimpleNumericTest {
@@ -16,13 +15,6 @@ public class SimpleNumericTest {
         boolean isSimple;
 
         arrayOfSimple.makeThreads();
-        try {
-            System.out.println("===========================================");
-            System.out.println("Please wait for 3 seconds..");
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            System.out.println("Interrupted Exception");
-        }
         int[] actualResult = arrayOfSimple.getFinalArray();
         Arrays.sort(actualResult);
 
@@ -70,7 +62,8 @@ public class SimpleNumericTest {
                 currentMicroArray = searchForNeededMicroArray(arrayOfSimple, actualFinalArray[i]);
                 counterForCurrentMicroArray = 0;
             }
-            System.out.println("now we compare: " + actualFinalArray[i] + " and " + currentMicroArray[counterForCurrentMicroArray]);
+            System.out.println("now we compare: " + actualFinalArray[i] + " and "
+                                + currentMicroArray[counterForCurrentMicroArray]);
             if (actualFinalArray[i] != currentMicroArray[counterForCurrentMicroArray]) {
                 hasProblem = true;
                 break;
